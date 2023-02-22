@@ -24,10 +24,9 @@ def _serialize(game):
     
     #Actions and alphabet like this format
     
-      # % agent 
-    # like that format
-    # agent(p1).
-    # agent(p2).
+    # % agent 
+  
+  
     
     yield "% Agents \n"
     for player in range(game.player_count):
@@ -50,10 +49,7 @@ def _serialize(game):
     yield "\n"
     
     #     % Act
-    # action(init).
-    # action(push).
-    # action(wait).
-    
+   
     yield "% Actions \n"
     
     for player, alphabet in enumerate(game.alphabet):
