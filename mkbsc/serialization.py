@@ -57,6 +57,7 @@ def to_file(game, filename, folder="games", fileext=".game"):
     with open(folder + filename + fileext, mode="w", encoding="utf8", newline="\n") as f:
         for line in _serialize(game):
             f.write(line + "\n")
+            
 
 def to_string(game):
     """Export a game to a string"""

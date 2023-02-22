@@ -67,10 +67,10 @@ class State:
                 return str(state.knowledges[0])
         if level == 0:
             if len(self.knowledges) > 1:
-                return "\n".join(["{" + ", ".join([state.epistemic_nice(level + 1) for state in knowledge]) + "}" for knowledge in self.knowledges])
+                return "\n".join(["[" + ", ".join([state.epistemic_nice(level + 1) for state in knowledge]) + "]" for knowledge in self.knowledges])
             else:
                 if type(self.knowledges[0]) is frozenset:
-                    return "{" + ", ".join([state.epistemic_nice(level + 1) for state in self.knowledges[0]]) + "}"
+                    return "[" + ", ".join([state.epistemic_nice(level + 1) for state in self.knowledges[0]]) + "]"
                 else:
                     return str(self.knowledges[0])
         else:
@@ -78,7 +78,7 @@ class State:
                 return "-".join(["".join([__wrap(state, level) for state in knowledge]) for knowledge in self.knowledges])
             else:
                 if type(self.knowledges[0]) is frozenset:
-                    return "{" + ", ".join([state.epistemic_nice(level + 1) for state in self.knowledges[0]]) + "}"
+                    return "[" + ", ".join([state.epistemic_nice(level + 1) for state in self.knowledges[0]]) + "]"
                 else:
                     return str(self.knowledges[0])
                 

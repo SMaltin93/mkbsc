@@ -307,8 +307,7 @@ class MultiplayerGame:
         
         attributes = self.graph.graph["graph"]
         
-        return MultiplayerGame(states, initial_state, alphabet, transitions, partitionings, **attributes)
-        
+        return MultiplayerGame(states, initial_state, alphabet, transitions, partitionings, **attributes)     
     
     def _synchronous_product(self, games):
         """Combine singleplayer knowledge-based games into a single knowledge-based multiplayer game"""
@@ -375,8 +374,6 @@ class MultiplayerGame:
         partitionings = tuple(Partitioning(*[Observation(*observation_dicts[i][knowledge]) for knowledge in observation_dicts[i]]) for i in range(self.player_count))
         
         return MultiplayerGame(states, initial_state, self.alphabet, transitions, partitionings, **attributes)
-        
-        
         
     def KBSC(self):
         """Apply the KBSC to the game (or MKBSC in the multiplayer case)"""
