@@ -5,8 +5,8 @@ from mkbsc import MultiplayerGame, getPrologInput, iterate_until_isomorphic, exp
 
 # --------------------------------------------------------------------
 
-# The Cart Pushing Game
-
+# The Cart Pushing Game  
+#
 # States
 L = ["start", "left","middle", "right"]
 
