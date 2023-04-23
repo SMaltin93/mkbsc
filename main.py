@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from mkbsc import MultiplayerGame, getPrologInput, iterate_until_isomorphic, export, to_string,toProlog, from_string, to_file, from_file
+from mkbsc import MultiplayerGame, getPrologInput, iterate_until_isomorphic, export, to_string, from_string, to_file, from_file
 
 
 # --------------------------------------------------------------------
@@ -45,8 +45,18 @@ Obs = [
 G = MultiplayerGame.create(L, L0, Sigma, Delta, Obs)
 
 GK = G.KBSC()
-GK0 = G.project(0)
-getPrologInput.to_files(GK, "inputProlog")
+
+
+iterate_until_isomorphic(GK, print_size=True)
+# to file 
+
+#GK.to_file("GK")
+
+to_file(GK, "GK")
+
+
+
+#getPrologInput.to_files(GK, "inputProlog")
 # print partitioning 
 #export the GK game to ./pictures/GK.png
-#export(G, "G")
+

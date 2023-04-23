@@ -39,13 +39,13 @@ def _serialize(game):
    
     yield "% Locations \n"
     for state in game.states:
-        yield "location(" + str(state) + ")."
+        yield "location(" +  str(state).replace( "(", "[").replace(")", "]") + ")."
     yield "\n"
         
     #initial(start).
     
     yield "% Initial location \n"
-    yield "initial(" + str(game.initial_state) + ")."
+    yield "initial(" + str(game.initial_state).replace( "(", "[").replace(")", "]") + ")."
     yield "\n"
     
     #     % Act
@@ -55,31 +55,35 @@ def _serialize(game):
     for player, alphabet in enumerate(game.alphabet):
         yield "% Player " + str(player + 1)
         for action in alphabet:
-            yield "action(" + str(action) + ")."
+            yield "action(" + "[" +str(action) + "]" + ")."
         yield ""    
     yield "\n"
     
     
 
-    #transition(start, [init, init], left).
+    #transition([start], [init, init], [left]).
+    #should be like # location([[start], [start]).
     
+     
     yield "% Transitions \n"
     for transition in game.transitions:
-        yield "transition(" + str(transition.start) + ", [" + ", ".join(transition.joint_action) + "], " + str(transition.end) + ")."
+        yield "transition(" +  str(transition.start).replace( "(", "[").replace(")", "]") + ", [" + ", ".join(transition.joint_action).replace( "(", "[").replace(")", "]") + "], " + str(transition.end).replace( "(", "[").replace(")", "]") + ")."
     yield "\n"
+     
     
+   
     
-    # observation(p1, [left, middle]). 
-    
-    yield "% Observations \n"
+    # observation(p1, [left, middle]).
+    #observation(p2, [ [ [middle, left], [right, middle] ], [ [right], [right, middle] ], [ [middle], [right, middle] ] ]).
     
     for player, partitioning in enumerate(game.partitionings):
         yield "% Player " + str(player + 1)
         for observation in partitioning:
-            yield "observation(p" + str(player + 1) + ", [" + ", ".join(str(state) for state in observation) + "])."
+            yield "observation(p" + str(player + 1) + ", [" + ", ".join(str(state) for state in observation).replace( "(", "[").replace(")", "]") + "])."
         yield ""
     yield "\n"
-    
+   
+ 
     
 def changeString(folder, filename):
     # read the file and change the string { to [ and } to ] using regex

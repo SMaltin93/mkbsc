@@ -7,4 +7,3 @@ from .multiplayer_game  import MultiplayerGame
 from .serialization     import from_file, to_file, from_string, to_string, export
 from .helper_functions  import iterate_until_isomorphic
 
-from .toProlog import toProlog
